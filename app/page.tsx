@@ -60,6 +60,12 @@ export default function Home() {
         >
           Alphabet Quiz →
         </Link>
+        <Link
+          href="/translate"
+          className="inline-block rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-2 transition-colors"
+        >
+          Translate →
+        </Link>
       </div>
 
       <div className="max-w-4xl mx-auto space-y-4">
