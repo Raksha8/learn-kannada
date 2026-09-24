@@ -20,6 +20,24 @@ function speak(text: string) {
   window.speechSynthesis.speak(utterance);
 }
 
+function PhraseGrid({ items }: { items: typeof phrases }) {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+      {items.map((phrase, i) => (
+        <button
+          key={i}
+          onClick={() => speak(phrase.kannada)}
+          className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-start gap-1 text-left transition-colors"
+        >
+          <p className="text-2xl text-orange-900">{phrase.kannada}</p>
+          <p className="text-sm text-gray-500">{phrase.transliteration}</p>
+          <p className="text-sm text-gray-500">{phrase.meaning}</p>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
@@ -43,25 +61,37 @@ export default function Home() {
       </div>
 
       <div className="max-w-4xl mx-auto space-y-4">
-        {categoryOrder.map((category) => (
-          <Accordion key={category} title={categoryLabels[category]}>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-              {phrases
-                .filter((p) => p.category === category)
-                .map((phrase, i) => (
-                  <button
-                    key={i}
-                    onClick={() => speak(phrase.kannada)}
-                    className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-start gap-1 text-left transition-colors"
-                  >
-                    <p className="text-2xl text-orange-900">{phrase.kannada}</p>
-                    <p className="text-sm text-gray-500">{phrase.transliteration}</p>
-                    <p className="text-sm text-gray-500">{phrase.meaning}</p>
-                  </button>
-                ))}
-            </div>
-          </Accordion>
-        ))}
+        {categoryOrder.map((category) => {
+          const items = phrases.filter((p) => p.category === category);
+
+          if (category === "numbers") {
+            return (
+              <Accordion key={category} title={categoryLabels[category]}>
+                <div className="space-y-3">
+                  {Array.from({ length: 10 }, (_, tens) => {
+                    const start = tens * 10 + 1;
+                    const end = start + 9;
+                    const group = items.filter((p) => {
+                      const n = Number(p.meaning);
+                      return n >= start && n <= end;
+                    });
+                    return (
+                      <Accordion key={start} title={`${start}–${end}`}>
+                        <PhraseGrid items={group} />
+                      </Accordion>
+                    );
+                  })}
+                </div>
+              </Accordion>
+            );
+          }
+
+          return (
+            <Accordion key={category} title={categoryLabels[category]}>
+              <PhraseGrid items={items} />
+            </Accordion>
+          );
+        })}
       </div>
     </main>
   );
