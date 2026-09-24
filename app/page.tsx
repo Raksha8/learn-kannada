@@ -49,20 +49,15 @@ export default function Home() {
               {phrases
                 .filter((p) => p.category === category)
                 .map((phrase, i) => (
-                  <div
+                  <button
                     key={i}
-                    className="bg-orange-50 rounded-xl p-4 border border-orange-100 flex flex-col gap-1"
+                    onClick={() => speak(phrase.kannada)}
+                    className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-start gap-1 text-left transition-colors"
                   >
                     <p className="text-2xl text-orange-900">{phrase.kannada}</p>
                     <p className="text-sm text-gray-500">{phrase.transliteration}</p>
                     <p className="text-sm text-gray-500">{phrase.meaning}</p>
-                    <button
-                      onClick={() => speak(phrase.kannada)}
-                      className="mt-2 self-start rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-1.5 transition-colors"
-                    >
-                      🔊 Speak
-                    </button>
-                  </div>
+                  </button>
                 ))}
             </div>
           </Accordion>
