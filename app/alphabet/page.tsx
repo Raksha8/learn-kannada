@@ -2,6 +2,7 @@
 
 import { alphabet } from "../../data/alphabet";
 import Accordion from "../components/Accordion";
+import BackLink from "../components/BackLink";
 
 function speak(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
@@ -12,6 +13,9 @@ function speak(text: string) {
 export default function Alphabet() {
   return (
     <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto">
+        <BackLink />
+      </div>
       <h1 className="text-3xl font-bold text-center text-orange-600 mb-2">
         Kannada Alphabet
       </h1>
@@ -20,7 +24,7 @@ export default function Alphabet() {
       </p>
 
       <div className="max-w-4xl mx-auto space-y-4">
-        <Accordion title="Vowels (ಸ್ವರಗಳು)" defaultOpen>
+        <Accordion title="Vowels (ಸ್ವರಗಳು — Svaragaḻu)" defaultOpen>
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
             {alphabet
               .filter((a) => a.type === "vowel")
@@ -37,7 +41,7 @@ export default function Alphabet() {
           </div>
         </Accordion>
 
-        <Accordion title="Consonants (ವ್ಯಂಜನಗಳು)">
+        <Accordion title="Consonants (ವ್ಯಂಜನಗಳು — Vyañjanagaḻu)">
           <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
             {alphabet
               .filter((a) => a.type === "consonant")

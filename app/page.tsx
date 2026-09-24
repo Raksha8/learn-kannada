@@ -6,13 +6,14 @@ import Accordion from "./components/Accordion";
 
 const categoryLabels: Record<string, string> = {
   greetings: "Greetings",
+  pronouns: "Pronouns (I, You, He, She...)",
   numbers: "Numbers",
   food: "Food",
   directions: "Directions",
   questions: "Common Questions",
 };
 
-const categoryOrder = ["greetings", "numbers", "food", "directions", "questions"];
+const categoryOrder = ["greetings", "pronouns", "numbers", "food", "directions", "questions"];
 
 function speak(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
@@ -41,9 +42,10 @@ function PhraseGrid({ items }: { items: typeof phrases }) {
 export default function Home() {
   return (
     <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center text-orange-600 mb-2">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-orange-600 mb-1">
         ಕನ್ನಡ ಕಲಿಯಿರಿ
       </h1>
+      <p className="text-center text-gray-400 text-sm mb-1">Kannaḍa Kaliyiri</p>
       <p className="text-center text-gray-500 mb-4">Learn Kannada</p>
       <div className="text-center mb-8 flex justify-center gap-3">
         <Link

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { alphabet } from "../../data/alphabet";
+import BackLink from "../components/BackLink";
 
 const STORAGE_KEY = "kannada-alphabet-quiz-stats";
 
@@ -18,6 +19,12 @@ function loadStats(): Stats {
 
 function saveStats(stats: Stats) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+}
+
+function speak(text: string) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "kn-IN";
+  window.speechSynthesis.speak(utterance);
 }
 
 function pickQuestion() {
@@ -42,6 +49,7 @@ export default function Quiz() {
   function handleAnswer(transliteration: string) {
     if (selected) return;
     setSelected(transliteration);
+    speak(question.answer.kannada);
 
     const isCorrect = transliteration === question.answer.transliteration;
     setScore((s) => ({ correct: s.correct + (isCorrect ? 1 : 0), total: s.total + 1 }));
@@ -62,6 +70,9 @@ export default function Quiz() {
 
   return (
     <main className="min-h-screen bg-yellow-50 p-4 sm:p-8 flex flex-col items-center">
+      <div className="w-full max-w-md">
+        <BackLink />
+      </div>
       <h1 className="text-3xl font-bold text-orange-600 mb-1">Alphabet Quiz</h1>
       <p className="text-gray-500 mb-6">
         Score: {score.correct} / {score.total}
@@ -97,12 +108,20 @@ export default function Quiz() {
         </div>
 
         {selected && (
-          <button
-            onClick={next}
-            className="mt-6 w-full rounded-full bg-orange-500 hover:bg-orange-600 text-white py-2.5 transition-colors"
-          >
-            Next →
-          </button>
+          <div className="mt-6 flex gap-3">
+            <button
+              onClick={() => speak(question.answer.kannada)}
+              className="rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 px-4 py-2.5 transition-colors"
+            >
+              🔊
+            </button>
+            <button
+              onClick={next}
+              className="flex-1 rounded-full bg-orange-500 hover:bg-orange-600 text-white py-2.5 transition-colors"
+            >
+              Next →
+            </button>
+          </div>
         )}
       </div>
     </main>

@@ -131,4 +131,15 @@ export const phrases = [
   { kannada: "ಇದು ಎಲ್ಲಿದೆ?", transliteration: "Idu ellide?", meaning: "Where is this?", category: "questions" },
   { kannada: "ನೀವು ಹೇಗಿದ್ದೀರಿ?", transliteration: "Nīvu hēgiddīri?", meaning: "How are you?", category: "questions" },
   { kannada: "ಸಮಯ ಎಷ್ಟು?", transliteration: "Samaya eṣṭu?", meaning: "What time is it?", category: "questions" },
+
+  { kannada: "ನಾನು", transliteration: "Nānu", meaning: "I", category: "pronouns" },
+  { kannada: "ನೀನು", transliteration: "Nīnu", meaning: "You (informal)", category: "pronouns" },
+  { kannada: "ನೀವು", transliteration: "Nīvu", meaning: "You (formal / plural)", category: "pronouns" },
+  { kannada: "ಅವನು", transliteration: "Avanu", meaning: "He", category: "pronouns" },
+  { kannada: "ಅವಳು", transliteration: "Avaḻu", meaning: "She", category: "pronouns" },
+  { kannada: "ಅದು", transliteration: "Adu", meaning: "It", category: "pronouns" },
+  { kannada: "ನಾವು", transliteration: "Nāvu", meaning: "We", category: "pronouns" },
+  { kannada: "ಅವರು", transliteration: "Avaru", meaning: "They", category: "pronouns" },
+  { kannada: "ಇದು", transliteration: "Idu", meaning: "This", category: "pronouns" },
+  { kannada: "ಅದು", transliteration: "Adu", meaning: "That", category: "pronouns" },
 ];
