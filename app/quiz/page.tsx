@@ -69,29 +69,29 @@ export default function Quiz() {
   }
 
   return (
-    <main className="min-h-screen bg-yellow-50 p-4 sm:p-8 flex flex-col items-center">
+    <main className="min-h-screen bg-background p-4 sm:p-8 flex flex-col items-center">
       <div className="w-full max-w-md">
         <BackLink />
       </div>
-      <h1 className="text-3xl font-bold text-orange-600 mb-1">Alphabet Quiz</h1>
-      <p className="text-gray-500 mb-6">
+      <h1 className="text-3xl font-bold text-accent mb-1">Alphabet Quiz</h1>
+      <p className="text-text-muted mb-6">
         Score: {score.correct} / {score.total}
       </p>
 
-      <div className="bg-white rounded-2xl shadow p-6 w-full max-w-md border border-orange-100">
-        <p className="text-sm text-gray-400 mb-2">How is this letter pronounced?</p>
-        <p className="text-5xl text-orange-900 mb-6 text-center">{question.answer.kannada}</p>
+      <div className="bg-surface rounded-2xl shadow p-6 w-full max-w-md border border-border-color">
+        <p className="text-sm text-text-muted mb-2">How is this letter pronounced?</p>
+        <p className="text-5xl text-foreground mb-6 text-center">{question.answer.kannada}</p>
 
         <div className="flex flex-col gap-3">
           {question.options.map((letter, i) => {
             const isCorrectAnswer = letter.transliteration === question.answer.transliteration;
             const isChosen = selected === letter.transliteration;
 
-            let style = "border-orange-200 bg-white hover:bg-orange-50";
+            let style = "border-border-color bg-surface hover:bg-surface-alt";
             if (selected) {
-              if (isCorrectAnswer) style = "border-green-500 bg-green-50";
-              else if (isChosen) style = "border-red-500 bg-red-50";
-              else style = "border-orange-100 bg-white opacity-60";
+              if (isCorrectAnswer) style = "border-green-500 bg-green-500/10";
+              else if (isChosen) style = "border-red-500 bg-red-500/10";
+              else style = "border-border-color bg-surface opacity-60";
             }
 
             return (
@@ -111,13 +111,13 @@ export default function Quiz() {
           <div className="mt-6 flex gap-3">
             <button
               onClick={() => speak(question.answer.kannada)}
-              className="rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 px-4 py-2.5 transition-colors"
+              className="rounded-full border border-accent text-accent hover:bg-surface-alt px-4 py-2.5 transition-colors"
             >
               🔊
             </button>
             <button
               onClick={next}
-              className="flex-1 rounded-full bg-orange-500 hover:bg-orange-600 text-white py-2.5 transition-colors"
+              className="flex-1 rounded-full bg-accent hover:bg-accent-hover text-white py-2.5 transition-colors"
             >
               Next →
             </button>

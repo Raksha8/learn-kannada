@@ -29,11 +29,11 @@ function PhraseGrid({ items }: { items: typeof phrases }) {
         <button
           key={i}
           onClick={() => speak(phrase.kannada)}
-          className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-start gap-1 text-left transition-colors"
+          className="bg-surface-alt hover:opacity-80 rounded-xl p-4 border border-border-color flex flex-col items-start gap-1 text-left transition-opacity"
         >
-          <p className="text-2xl text-orange-900">{phrase.kannada}</p>
-          <p className="text-sm text-gray-500">{phrase.transliteration}</p>
-          <p className="text-sm text-gray-500">{phrase.meaning}</p>
+          <p className="text-2xl text-foreground">{phrase.kannada}</p>
+          <p className="text-sm text-text-muted">{phrase.transliteration}</p>
+          <p className="text-sm text-text-muted">{phrase.meaning}</p>
         </button>
       ))}
     </div>
@@ -50,51 +50,51 @@ export default function Home() {
   const word = wordOfTheDay();
 
   return (
-    <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
-      <h1 className="text-3xl sm:text-4xl font-bold text-center text-orange-600 mb-1">
+    <main className="min-h-screen bg-background p-4 sm:p-8">
+      <h1 className="text-3xl sm:text-4xl font-bold text-center text-accent mb-1">
         ಕನ್ನಡ ಕಲಿಯಿರಿ
       </h1>
-      <p className="text-center text-gray-400 text-sm mb-1">Kannaḍa Kaliyiri</p>
-      <p className="text-center text-gray-500 mb-4">Learn Kannada</p>
+      <p className="text-center text-text-muted text-sm mb-1">Kannaḍa Kaliyiri</p>
+      <p className="text-center text-text-muted mb-4">Learn Kannada</p>
 
       {streak > 0 && (
-        <p className="text-center text-orange-600 font-medium mb-4">
+        <p className="text-center text-accent font-medium mb-4">
           🔥 {streak} day streak
         </p>
       )}
 
       <button
         onClick={() => speak(word.kannada)}
-        className="w-full max-w-4xl mx-auto mb-6 flex items-center gap-4 bg-white rounded-2xl shadow p-4 border border-orange-200 hover:bg-orange-50 transition-colors text-left"
+        className="w-full max-w-4xl mx-auto mb-6 flex items-center gap-4 bg-surface rounded-2xl shadow p-4 border border-border-color hover:bg-surface-alt transition-colors text-left"
       >
-        <span className="text-xs font-semibold text-orange-400 uppercase tracking-wide shrink-0">
+        <span className="text-xs font-semibold text-accent uppercase tracking-wide shrink-0">
           Word of<br />the Day
         </span>
-        <span className="text-3xl text-orange-900">{word.kannada}</span>
-        <span className="text-sm text-gray-500">
+        <span className="text-3xl text-foreground">{word.kannada}</span>
+        <span className="text-sm text-text-muted">
           {word.transliteration}
           <br />
           {word.meaning}
         </span>
-        <span className="ml-auto text-orange-400 text-xl shrink-0">🔊</span>
+        <span className="ml-auto text-accent text-xl shrink-0">🔊</span>
       </button>
 
       <div className="max-w-4xl mx-auto mb-8 grid grid-cols-3 gap-2 sm:gap-3">
         <Link
           href="/alphabet"
-          className="rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm sm:text-base px-3 py-3 text-center transition-colors"
+          className="rounded-xl bg-accent hover:bg-accent-hover text-white text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Learn the Alphabet →
         </Link>
         <Link
           href="/quiz"
-          className="rounded-xl border border-orange-500 text-orange-600 hover:bg-orange-50 text-sm sm:text-base px-3 py-3 text-center transition-colors"
+          className="rounded-xl border border-accent text-accent hover:bg-surface-alt text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Alphabet Quiz →
         </Link>
         <Link
           href="/translate"
-          className="rounded-xl border border-orange-500 text-orange-600 hover:bg-orange-50 text-sm sm:text-base px-3 py-3 text-center transition-colors"
+          className="rounded-xl border border-accent text-accent hover:bg-surface-alt text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Translate →
         </Link>

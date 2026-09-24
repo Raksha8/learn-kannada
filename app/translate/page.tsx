@@ -38,25 +38,25 @@ export default function Translate() {
   }
 
   return (
-    <main className="min-h-screen bg-yellow-50 p-4 sm:p-8 flex flex-col items-center">
+    <main className="min-h-screen bg-background p-4 sm:p-8 flex flex-col items-center">
       <div className="w-full max-w-md">
         <BackLink />
       </div>
-      <h1 className="text-3xl font-bold text-orange-600 mb-1">Translate</h1>
-      <p className="text-gray-500 mb-6 text-center">English → Kannada</p>
+      <h1 className="text-3xl font-bold text-accent mb-1">Translate</h1>
+      <p className="text-text-muted mb-6 text-center">English → Kannada</p>
 
-      <div className="bg-white rounded-2xl shadow p-6 w-full max-w-md border border-orange-100">
+      <div className="bg-surface rounded-2xl shadow p-6 w-full max-w-md border border-border-color">
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type an English sentence..."
-          className="w-full border border-orange-200 rounded-xl p-3 text-base resize-none focus:outline-none focus:ring-2 focus:ring-orange-300"
+          className="w-full bg-transparent border border-border-color rounded-xl p-3 text-base resize-none focus:outline-none focus:ring-2 focus:ring-accent"
           rows={3}
         />
         <button
           onClick={handleTranslate}
           disabled={loading || !input.trim()}
-          className="mt-3 w-full rounded-full bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white py-2.5 transition-colors"
+          className="mt-3 w-full rounded-full bg-accent hover:bg-accent-hover disabled:opacity-50 text-white py-2.5 transition-colors"
         >
           {loading ? "Translating..." : "Translate"}
         </button>
@@ -64,11 +64,11 @@ export default function Translate() {
         {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
 
         {result && (
-          <div className="mt-5 bg-orange-50 rounded-xl p-4 border border-orange-100">
-            <p className="text-2xl text-orange-900">{result}</p>
+          <div className="mt-5 bg-surface-alt rounded-xl p-4 border border-border-color">
+            <p className="text-2xl text-foreground">{result}</p>
             <button
               onClick={() => speak(result)}
-              className="mt-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm px-4 py-1.5 transition-colors"
+              className="mt-3 rounded-full bg-accent hover:bg-accent-hover text-white text-sm px-4 py-1.5 transition-colors"
             >
               🔊 Speak
             </button>

@@ -12,14 +12,14 @@ function speak(text: string) {
 
 export default function Alphabet() {
   return (
-    <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
+    <main className="min-h-screen bg-background p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         <BackLink />
       </div>
-      <h1 className="text-3xl font-bold text-center text-orange-600 mb-2">
+      <h1 className="text-3xl font-bold text-center text-accent mb-2">
         Kannada Alphabet
       </h1>
-      <p className="text-center text-gray-500 mb-8">
+      <p className="text-center text-text-muted mb-8">
         Start here — learn to recognize the letters before moving to phrases.
       </p>
 
@@ -32,10 +32,10 @@ export default function Alphabet() {
                 <button
                   key={i}
                   onClick={() => speak(letter.kannada)}
-                  className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-center gap-1 transition-colors"
+                  className="bg-surface-alt hover:opacity-80 rounded-xl p-4 border border-border-color flex flex-col items-center gap-1 transition-opacity"
                 >
-                  <span className="text-3xl text-orange-900">{letter.kannada}</span>
-                  <span className="text-sm text-gray-500">{letter.transliteration}</span>
+                  <span className="text-3xl text-foreground">{letter.kannada}</span>
+                  <span className="text-sm text-text-muted">{letter.transliteration}</span>
                 </button>
               ))}
           </div>
@@ -49,10 +49,10 @@ export default function Alphabet() {
                 <button
                   key={i}
                   onClick={() => speak(letter.kannada)}
-                  className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 border border-orange-100 flex flex-col items-center gap-1 transition-colors"
+                  className="bg-surface-alt hover:opacity-80 rounded-xl p-4 border border-border-color flex flex-col items-center gap-1 transition-opacity"
                 >
-                  <span className="text-3xl text-orange-900">{letter.kannada}</span>
-                  <span className="text-sm text-gray-500">{letter.transliteration}</span>
+                  <span className="text-3xl text-foreground">{letter.kannada}</span>
+                  <span className="text-sm text-text-muted">{letter.transliteration}</span>
                 </button>
               ))}
           </div>
