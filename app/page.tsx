@@ -65,30 +65,36 @@ export default function Home() {
 
       <button
         onClick={() => speak(word.kannada)}
-        className="block mx-auto mb-8 bg-white rounded-2xl shadow p-5 border border-orange-200 text-center hover:bg-orange-50 transition-colors max-w-xs"
+        className="w-full max-w-4xl mx-auto mb-6 flex items-center gap-4 bg-white rounded-2xl shadow p-4 border border-orange-200 hover:bg-orange-50 transition-colors text-left"
       >
-        <p className="text-xs text-orange-400 uppercase tracking-wide mb-2">Word of the Day</p>
-        <p className="text-3xl text-orange-900">{word.kannada}</p>
-        <p className="text-sm text-gray-500 mt-1">{word.transliteration}</p>
-        <p className="text-sm text-gray-500">{word.meaning}</p>
+        <span className="text-xs font-semibold text-orange-400 uppercase tracking-wide shrink-0">
+          Word of<br />the Day
+        </span>
+        <span className="text-3xl text-orange-900">{word.kannada}</span>
+        <span className="text-sm text-gray-500">
+          {word.transliteration}
+          <br />
+          {word.meaning}
+        </span>
+        <span className="ml-auto text-orange-400 text-xl shrink-0">🔊</span>
       </button>
 
-      <div className="text-center mb-8 flex justify-center gap-3">
+      <div className="max-w-4xl mx-auto mb-8 grid grid-cols-3 gap-2 sm:gap-3">
         <Link
           href="/alphabet"
-          className="inline-block rounded-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 transition-colors"
+          className="rounded-xl bg-orange-500 hover:bg-orange-600 text-white text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Learn the Alphabet →
         </Link>
         <Link
           href="/quiz"
-          className="inline-block rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-2 transition-colors"
+          className="rounded-xl border border-orange-500 text-orange-600 hover:bg-orange-50 text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Alphabet Quiz →
         </Link>
         <Link
           href="/translate"
-          className="inline-block rounded-full border border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-2 transition-colors"
+          className="rounded-xl border border-orange-500 text-orange-600 hover:bg-orange-50 text-sm sm:text-base px-3 py-3 text-center transition-colors"
         >
           Translate →
         </Link>
