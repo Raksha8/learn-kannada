@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { phrases } from "../data/phrases";
 import Accordion from "./components/Accordion";
+import { useStreak } from "./useStreak";
 
 const categoryLabels: Record<string, string> = {
   greetings: "Greetings",
@@ -39,7 +40,15 @@ function PhraseGrid({ items }: { items: typeof phrases }) {
   );
 }
 
+function wordOfTheDay() {
+  const daysSinceEpoch = Math.floor(Date.now() / 86400000);
+  return phrases[daysSinceEpoch % phrases.length];
+}
+
 export default function Home() {
+  const streak = useStreak();
+  const word = wordOfTheDay();
+
   return (
     <main className="min-h-screen bg-yellow-50 p-4 sm:p-8">
       <h1 className="text-3xl sm:text-4xl font-bold text-center text-orange-600 mb-1">
@@ -47,6 +56,23 @@ export default function Home() {
       </h1>
       <p className="text-center text-gray-400 text-sm mb-1">Kannaḍa Kaliyiri</p>
       <p className="text-center text-gray-500 mb-4">Learn Kannada</p>
+
+      {streak > 0 && (
+        <p className="text-center text-orange-600 font-medium mb-4">
+          🔥 {streak} day streak
+        </p>
+      )}
+
+      <button
+        onClick={() => speak(word.kannada)}
+        className="block mx-auto mb-8 bg-white rounded-2xl shadow p-5 border border-orange-200 text-center hover:bg-orange-50 transition-colors max-w-xs"
+      >
+        <p className="text-xs text-orange-400 uppercase tracking-wide mb-2">Word of the Day</p>
+        <p className="text-3xl text-orange-900">{word.kannada}</p>
+        <p className="text-sm text-gray-500 mt-1">{word.transliteration}</p>
+        <p className="text-sm text-gray-500">{word.meaning}</p>
+      </button>
+
       <div className="text-center mb-8 flex justify-center gap-3">
         <Link
           href="/alphabet"
