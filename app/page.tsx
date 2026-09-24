@@ -45,7 +45,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto space-y-4">
         {categoryOrder.map((category) => (
           <Accordion key={category} title={categoryLabels[category]}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
               {phrases
                 .filter((p) => p.category === category)
                 .map((phrase, i) => (
