@@ -7,7 +7,16 @@ import Link from "next/link";
 function speak(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "pa-IN";
-  window.speechSynthesis.speak(utterance);
+  utterance.rate = 0.9;
+  try {
+    window.speechSynthesis.speak(utterance);
+  } catch {
+    console.warn("Punjabi voice not available; trying Hindi fallback");
+    const fallback = new SpeechSynthesisUtterance(text);
+    fallback.lang = "hi-IN";
+    fallback.rate = 0.9;
+    window.speechSynthesis.speak(fallback);
+  }
 }
 
 export default function PunjabiAlphabet() {
