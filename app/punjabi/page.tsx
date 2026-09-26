@@ -6,12 +6,12 @@ import Accordion from "../components/Accordion";
 import { useStreak } from "../useStreak";
 
 const categoryLabels: Record<string, string> = {
-  greetings: "Greetings",
-  pronouns: "Pronouns (I, You, He, She...)",
-  numbers: "Numbers",
-  food: "Food",
-  directions: "Directions",
-  questions: "Common Questions",
+  greetings: "ਸਲਾਮ (Greetings)",
+  pronouns: "ਸਰਵਨਾਮ (Pronouns)",
+  numbers: "ਸੰਖਿਆ (Numbers)",
+  food: "ਖਾਧ (Food)",
+  directions: "ਦਿਸ਼ਾ (Directions)",
+  questions: "ਸਵਾਲ (Questions)",
 };
 
 const categoryOrder = ["greetings", "pronouns", "numbers", "food", "directions", "questions"];
