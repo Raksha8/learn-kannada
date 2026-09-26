@@ -6,17 +6,26 @@ import Link from "next/link";
 
 function speak(text: string) {
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "pa-IN";
   utterance.rate = 0.9;
-  try {
-    window.speechSynthesis.speak(utterance);
-  } catch {
-    console.warn("Punjabi voice not available; trying Hindi fallback");
-    const fallback = new SpeechSynthesisUtterance(text);
-    fallback.lang = "hi-IN";
-    fallback.rate = 0.9;
-    window.speechSynthesis.speak(fallback);
+
+  // Try Punjabi first, then Hindi, then English as fallback
+  const voices = window.speechSynthesis.getVoices();
+  const punjabiVoice = voices.find(v => v.lang.startsWith("pa"));
+  const hindiVoice = voices.find(v => v.lang.startsWith("hi"));
+  const englishVoice = voices.find(v => v.lang.startsWith("en"));
+
+  if (punjabiVoice) {
+    utterance.voice = punjabiVoice;
+    utterance.lang = "pa-IN";
+  } else if (hindiVoice) {
+    utterance.voice = hindiVoice;
+    utterance.lang = "hi-IN";
+  } else if (englishVoice) {
+    utterance.voice = englishVoice;
+    utterance.lang = "en-US";
   }
+
+  window.speechSynthesis.speak(utterance);
 }
 
 export default function PunjabiAlphabet() {
